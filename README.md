@@ -1,2 +1,2 @@
-# 2DDR_Skeleton
-A new representation for skeleton motion representation
+# Temporal-Oriented Rotation Descriptors
+Skeleton motion representation
