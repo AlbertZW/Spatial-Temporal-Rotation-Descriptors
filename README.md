@@ -1,5 +1,7 @@
 # Advanced Skeleton-Based Action Recognition via Spatial-Temporal Rotation Descriptors
 ## Overview
+![](./Rotation_descriptors.png)
+**Figure** (a) shows the movement of the joint unit constructed on the shoulder at adjacent sample moments. In (b), angles of bias *\theta* and *\phi* denote the rotation axis *n*. The linear combination of angles *(\theta, \phi, \psi)* constructs RAR. In (c), *α<sub>1</sub>, α<sub>2</sub>* are the internal angles between two bones *e<sub>m</sub>* and *e<sub>n</sub>* on the tangential direction and *β* is the angular difference between norm vectors *p*. The angular differences on the tangential and normal directions *α<sub>2</sub> − α<sub>1</sub>* and *β* construct 2DDR.
 ## Citation
 ```
 @article{shen2021advanced,
