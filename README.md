@@ -10,7 +10,9 @@ We first merge the files in ```./data_gen``` of our repository with the one in 2
 ```
 python data_gen/ntu_gen-preprocess.py
 ```
-The configuration of our current code is for RAR. The related codes start with the comment ```# added for generate Rotation Descriptors```
+The configuration of our current code is for RAR. The related codes start with the comment ```# added for generate Rotation Descriptors```. Note that since the dimension of RAR for each joint unit is 3 while 2DDR is 2, do not forget the change the code in **line 122** to reconfigure.
+
+The configurations of the neural network should also be modified according to the proposed rotation descriptors.  Files in ```./config``` and ```./graph``` are the configurations for 2S-AGCN.
 
 ## Citation
 ```
