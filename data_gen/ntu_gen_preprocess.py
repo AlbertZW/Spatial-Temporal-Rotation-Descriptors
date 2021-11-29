@@ -131,12 +131,12 @@ def gendata(data_path, out_path, ignored_sample_path=None, benchmark='xsub', par
 		fp[i, :, 0:data.shape[1] - 1, :, :] = data[:, 0:data.shape[1] - 1, :, :]
 		rar[i, :, 0:data.shape[1] - 1, :, :] = RotationRep.getJointRotationFeature(data)
 
-	fp = pre_normalization(fp)
+	# fp = pre_normalization(fp)
 	# np.save('{}/{}_data_joint_pad.npy'.format(out_path, part), fp)
 
 	# added for generate Rotation Descriptors
 	########################################
-	np.save('{}/{}_data_rar_pad.npy'.format(out_path, part), lrp)
+	np.save('{}/{}_data_rar_pad.npy'.format(out_path, part), rar)
 
 
 
