@@ -5,7 +5,7 @@ import sys
 
 sys.path.extend(['../'])
 from data_gen.preprocess import pre_normalization
-from data_gen import LowDOFRep_NTURGBD
+from data_gen.rotationAnglesRep_NTURGBD import RotationAnglesRep
 
 training_subjects = [1, 2, 4, 5, 8, 9, 13, 14, 15, 16, 17, 18, 19, 25, 27, 28, 31, 34, 35, 38]
 training_cameras = [2, 3]
@@ -116,27 +116,27 @@ def gendata(data_path, out_path, ignored_sample_path=None, benchmark='xsub', par
 
 	fp = np.zeros((len(sample_label), 3, max_frame, num_joint, max_body_true), dtype=np.float32)
 
-	# ajoute pour generer LowDOFRep
+	# added for generate Rotation Descriptors
 	########################################
-	LowDOFRep = LowDOFRep_NTURGBD.LowDOFRep()
-	lrp = np.zeros((len(sample_label), 2, max_frame, LowDOFRep.getFeatureLength(), max_body_true), dtype=np.float32)
+	RotationRep = RotationAnglesRep()
+	rar = np.zeros((len(sample_label), 3, max_frame, RotationRep.getFeatureLength(), max_body_true), dtype=np.float32)
 
 	for i, s in enumerate(tqdm(sample_name)):
 		print(s)
 		data = read_xyz(os.path.join(data_path, s), max_body=max_body_kinect, num_joint=num_joint)
 		# fp[i, :, 0:data.shape[1], :, :] = data
 
-		# ajoute pour generer LowDOFRep
+		# added for generate Rotation Descriptors
 		########################################
 		fp[i, :, 0:data.shape[1] - 1, :, :] = data[:, 0:data.shape[1] - 1, :, :]
-		lrp[i, :, 0:data.shape[1] - 1, :, :] = LowDOFRep.getJointRotationFeature(data)
+		rar[i, :, 0:data.shape[1] - 1, :, :] = RotationRep.getJointRotationFeature(data)
 
 	fp = pre_normalization(fp)
-	np.save('{}/{}_data_joint_pad.npy'.format(out_path, part), fp)
+	# np.save('{}/{}_data_joint_pad.npy'.format(out_path, part), fp)
 
-	# ajoute pour generer LowDOFRep
+	# added for generate Rotation Descriptors
 	########################################
-	np.save('{}/{}_data_lrp_pad.npy'.format(out_path, part), lrp)
+	np.save('{}/{}_data_rar_pad.npy'.format(out_path, part), lrp)
 
 
 

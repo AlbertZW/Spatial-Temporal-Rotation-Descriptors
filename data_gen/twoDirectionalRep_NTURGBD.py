@@ -1,6 +1,6 @@
 import numpy as np
 
-class LowDOFRep:
+class TwoDirectionalRep:
 	def __init__(self):  # C * T * V * M   [3, T, 25, 2]
 		# ordering nodes for the features
 		# 29 joints

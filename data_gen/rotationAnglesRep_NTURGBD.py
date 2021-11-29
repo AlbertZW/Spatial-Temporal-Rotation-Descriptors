@@ -1,7 +1,7 @@
 import numpy as np
 import math
 
-class rotationAnglesRep:
+class RotationAnglesRep:
 	def __init__(self):  # C * T * V * M   [3, T, 25, 2]
 		# ordering nodes for the features
 		# 29 joints
